@@ -18,14 +18,3 @@ export default function App() {
       </Routes>
   );
 }
-
-function About() {
-  return (
-    <div>About</div>
-  )
-}
-function Contact() {
-  return (
-    <div>Contact</div>
-  )
-}
