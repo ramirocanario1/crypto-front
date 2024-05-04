@@ -25,7 +25,6 @@ export default function FormDeposito({tipoDeCambio, setDatosDeposito}) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("Deposito confirmado")
     setDatosDeposito({
       pesos: pesos,
       usdt: dolares
@@ -52,10 +51,10 @@ export default function FormDeposito({tipoDeCambio, setDatosDeposito}) {
         <fieldset className="flex flex-col">
           <label>Vas a recibir</label>
           <input
-            type="number"
+            type="text"
             disabled
             className="rounded shadow-md py-2 px-1 text-black"
-            value={dolares}
+            value={`${dolares ? dolares : 0} USDT`}
           />
         </fieldset>
 
