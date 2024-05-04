@@ -4,6 +4,7 @@ import Home from './routes/Home';
 import NoMatch from './routes/NoMatch';
 import Portafolio from './routes/Portafolio';
 import DetalleCripto from './routes/DetalleCripto';
+import Depositar from './routes/Depositar';
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="portafolio" element={<Portafolio />} />
           <Route path="cripto/:id" element={<DetalleCripto />} />
-
+          <Route path="depositar" element={<Depositar />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
