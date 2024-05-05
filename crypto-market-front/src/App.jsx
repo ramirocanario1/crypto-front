@@ -5,6 +5,7 @@ import NoMatch from './routes/NoMatch';
 import Portafolio from './routes/Portafolio';
 import DetalleCripto from './routes/DetalleCripto';
 import Depositar from './routes/Depositar';
+import Retirar from './routes/Retirar';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="portafolio" element={<Portafolio />} />
           <Route path="cripto/:id" element={<DetalleCripto />} />
           <Route path="depositar" element={<Depositar />} />
+          <Route path="retirar" element={<Retirar />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
