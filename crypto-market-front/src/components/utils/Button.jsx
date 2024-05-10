@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Button({ children, type = "success" }) {
+export default function Button({ children, type = "success", to = "#", className }) {
 
   let background, hoverBg
   if (type === "success") {
@@ -15,8 +16,8 @@ export default function Button({ children, type = "success" }) {
   }
 
   return (
-    <button className={`${background} w-full p-2 rounded-md disabled:bg-gray-600 ${hoverBg} transition-colors`}>
+    <Link to={to} className={`${background} text-center w-full p-2 rounded-md disabled:bg-gray-600 ${hoverBg} transition-colors ${className}`}>
       {children}
-    </button>
+    </Link>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function ButtonOutlined({ children, type = "success" }) {
+export default function ButtonOutlined({ children, type = "success", to = "#", className}) {
 
   let color, border;
   if (type === "success") {
@@ -15,10 +16,8 @@ export default function ButtonOutlined({ children, type = "success" }) {
   }
 
   return (
-    <button className={`${color} ${border} border-2 w-full p-2 rounded-md disabled:border-gray-600`}>
+    <Link to={to} className={`${color} ${border} border-2 w-full p-2 rounded-md disabled:border-gray-600 text-center ${className}`}>
       {children}
-    </button>
+    </Link>
   );
-
-  return <div>ButtonOutlined</div>;
 }
