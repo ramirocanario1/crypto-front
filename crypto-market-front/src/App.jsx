@@ -7,6 +7,7 @@ import DetalleCripto from "./routes/DetalleCripto";
 import Depositar from "./routes/Depositar";
 import Retirar from "./routes/Retirar";
 import Login from "./routes/Login";
+import Registro from "./routes/Registro";
 
 export default function App() {
   return (
@@ -53,6 +54,7 @@ export default function App() {
           }
         />
         <Route path="login" element={<Login />} />
+        <Route path="registro" element={<Registro />} />
       </Route>
       <Route path="*" element={<NoMatch />} />
     </Routes>
