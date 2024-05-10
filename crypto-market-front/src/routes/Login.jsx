@@ -23,7 +23,7 @@ export default function Login() {
         </fieldset>
         <fieldset className="flex flex-col gap-1 mt-2">
           <Button>Iniciar sesion</Button>
-          <ButtonOutlined>Registrarse</ButtonOutlined>
+          <ButtonOutlined to="/registro">Registrarse</ButtonOutlined>
         </fieldset>
       </form>
     </main>
