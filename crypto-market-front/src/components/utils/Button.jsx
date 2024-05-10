@@ -15,7 +15,7 @@ export default function Button({ children, type = "success" }) {
   }
 
   return (
-    <button className={`${background} w-full p-2 rounded-md mt-5 disabled:bg-gray-600 ${hoverBg} transition-colors`}>
+    <button className={`${background} w-full p-2 rounded-md disabled:bg-gray-600 ${hoverBg} transition-colors`}>
       {children}
     </button>
   );

@@ -15,7 +15,7 @@ export default function ButtonOutlined({ children, type = "success" }) {
   }
 
   return (
-    <button className={`${color} ${border} border-2 w-full p-2 rounded-md mt-5 disabled:border-gray-600`}>
+    <button className={`${color} ${border} border-2 w-full p-2 rounded-md disabled:border-gray-600`}>
       {children}
     </button>
   );
