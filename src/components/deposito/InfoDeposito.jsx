@@ -4,25 +4,35 @@ import Title from "../utils/Title";
 import Description from "../utils/Description";
 import { MdOutlineArrowDownward } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import useDeposito from "./useDeposito";
+import getCurrentUser from "../utils/getCurrentUser";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import FieldError from "../utils/FieldError";
+import FieldSuccess from "../utils/FieldSuccess";
 
 export default function InfoDeposito({ datosDeposito }) {
 
-  // Hook para redirigir
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
+  // Animar
+  const [animateRef ] = useAutoAnimate()
 
-  const handleClick = () => {
-    // Simular demora de 2 segundos
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+  const navigate = useNavigate();
+  const { depositar, isError, isLoading, isSuccess } = useDeposito();
+
+  // Se ejecuta para efectuar el deposito
+  const handleClick = async () => {    
+    const userId = getCurrentUser().id;
+    const success = depositar(userId, datosDeposito.usdt); 
+    
+    if (success) {
+      // Demorar 4 segundos
+      await new Promise((resolve) => setTimeout(resolve, 6000));
       navigate("/");
-    }, 2000);
+    }
   }
 
 
   return (
-    <>
+    <div ref={animateRef} className="flex flex-col gap-3">
       <Section>
         <Title>Información de depósito</Title>
         <Description>
@@ -38,10 +48,20 @@ export default function InfoDeposito({ datosDeposito }) {
         Una vez realizada la transferencia, puedes confirmar el deposito para
         que los fondos se vean reflejados en tu cuenta.
       </Description>
-      <button className="bg-green-500 text-white py-2 px-4 rounded-md mt-3 text-center" onClick={handleClick}>
+      {isError && (
+        <FieldError>
+          Hubo un error al procesar la transferencia. Por favor, intenta de nuevo.
+        </FieldError>
+      )}
+      {isSuccess && (
+        <FieldSuccess>
+          La transferencia fue realizada con éxito. Puedes ver los fondos en tu cuenta.
+        </FieldSuccess>
+      )}
+      <button className="bg-green-500 text-white py-2 px-4 rounded-md mt-3 text-center w-full" onClick={handleClick}>
         {isLoading ? "Comprobando transferencia..." : "Confirmar depósito"}
       </button>
-    </>
+    </div>
   );
 }
 
