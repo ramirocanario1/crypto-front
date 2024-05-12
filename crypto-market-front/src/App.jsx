@@ -8,6 +8,7 @@ import Depositar from "./routes/Depositar";
 import Retirar from "./routes/Retirar";
 import Login from "./routes/Login";
 import Registro from "./routes/Registro";
+import Perfil from "./routes/Perfil";
 
 export default function App() {
   return (
@@ -50,6 +51,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Retirar />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="perfil"
+          element={
+            <ProtectedRoute>
+              <Perfil />
             </ProtectedRoute>
           }
         />
