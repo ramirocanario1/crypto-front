@@ -2,6 +2,7 @@ import React from 'react'
 import Accesos from '../components/home/Accesos'
 import DolarCripto from '../components/home/DolarCripto'
 import Title from '../components/utils/Title'
+import Criptomonedas from '../components/home/criptomonedas/Criptomonedas'
 
 export default function Home() {
 
@@ -12,6 +13,7 @@ export default function Home() {
       <Title>Bienvenido, {user.username}</Title>
       <Accesos />
       <DolarCripto />
+      <Criptomonedas />
     </main>
   ) 
 }
