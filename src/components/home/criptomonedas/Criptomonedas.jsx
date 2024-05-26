@@ -3,6 +3,7 @@ import Title from '../../utils/Title'
 import Description from '../../utils/Description'
 import useGetCriptomonedas from './useGetCriptomonedas'
 import Variacion from '../../utils/Variacion'
+import { Link } from 'react-router-dom'
 
 export default function Criptomonedas() {
 
@@ -36,7 +37,7 @@ function ListaCriptos({ criptos }) {
 
 function Cripto({ cripto }) {
   return (
-    <div className='bg-gray-800 flex items-center shadow-md rounded'>
+    <Link to={`/cripto/${cripto.id_api}`} className='bg-gray-800 flex items-center shadow-md rounded hover:bg-gray-900 transition-colors'>
       
       <picture>
         <img src={cripto.imagen} alt={cripto.nombre} className='w-20 p-3' />
@@ -58,7 +59,7 @@ function Cripto({ cripto }) {
         </div>
 
       </div>
-    </div>
+    </Link>
   )
 }
 
