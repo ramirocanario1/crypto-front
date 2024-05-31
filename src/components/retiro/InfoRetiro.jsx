@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Section from "../deposito/Section";
-import Title from "../utils/Title";
 import Description from "../utils/Description";
 import { MdOutlineArrowDownward } from "react-icons/md";
+import useRetiro from "./useRetiro";
+import getCurrentUser from "../utils/getCurrentUser";
 
 export default function InfoRetiro({ datosRetiro }) {
   // Hook para redirigir
@@ -11,13 +12,17 @@ export default function InfoRetiro({ datosRetiro }) {
   const [isLoading, setIsLoading] = useState(false);
   const [aliasValido, setAliasValido] = useState(false);
 
-  const handleClick = () => {
-    // Simular demora de 2 segundos
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+  const { retirar } = useRetiro();
+
+  const handleClick = async () => {
+    const userId = getCurrentUser().id;
+    const success = retirar(userId, datosRetiro.usdt); 
+    
+    if (success) {
+      // Demorar 4 segundos
+      await new Promise((resolve) => setTimeout(resolve, 6000));
       navigate("/");
-    }, 2000);
+    }
   };
 
   return (
