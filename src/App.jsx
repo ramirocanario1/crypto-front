@@ -10,6 +10,7 @@ import Login from "./routes/Login";
 import Registro from "./routes/Registro";
 import Perfil from "./routes/Perfil";
 import { UserProvider } from "./contexts/UserContext";
+import Movimientos from "./routes/Movimientos";
 
 export default function App() {
   return (
@@ -61,6 +62,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Perfil />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="movimientos"
+            element={
+              <ProtectedRoute>
+                <Movimientos />
               </ProtectedRoute>
             }
           />

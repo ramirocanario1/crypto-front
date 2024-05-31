@@ -1,8 +1,11 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import useGetSaldo from './useGetSaldo';
+
+import { FaInfoCircle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 export default function Saldo() {
 
@@ -29,11 +32,15 @@ export default function Saldo() {
       <p>Tu saldo</p>
 
       <div className='flex justify-between'>
-        <h1 className='text-3xl'>{ocultarSaldo ? '****' : saldo + ' USDT'}</h1>
+        <Link to='/movimientos' className='text-3xl'>{ocultarSaldo ? '****' : saldo + ' USDT'}</Link>
         {
-          ocultarSaldo ? <button onClick={handleOcultarSaldo}><FaEyeSlash className='w-6 h-6' /></button> : <button onClick={handleOcultarSaldo}><FaEye className='w-6 h-6' /></button>
+          ocultarSaldo ? 
+            <button onClick={handleOcultarSaldo}><FaEyeSlash className='w-6 h-6' /></button> 
+            : 
+            <button onClick={handleOcultarSaldo}><FaEye className='w-6 h-6' /></button>
         }
       </div>
+      <p className='text-sm flex items-center gap-1 text-gray-400'><FaInfoCircle className='w-3 h-3'/> Clickeá tu saldo para ver tus movimientos</p>
     </section>
   )
 }
