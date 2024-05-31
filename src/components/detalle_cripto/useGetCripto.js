@@ -30,8 +30,11 @@ export default function useGetCripto({id}) {
       return true
 
     } catch (error) {
-      setIsError(true)
-      return null
+
+      setData(cripto)
+      return true
+      // setIsError(true)
+      // return null
     } finally {
       setIsLoading(false)
     }
