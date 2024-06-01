@@ -11,6 +11,7 @@ import Registro from "./routes/Registro";
 import Perfil from "./routes/Perfil";
 import { UserProvider } from "./contexts/UserContext";
 import Movimientos from "./routes/Movimientos";
+import Comprar from "./routes/Comprar";
 
 export default function App() {
   return (
@@ -70,6 +71,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Movimientos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="comprar/:id"
+            element={
+              <ProtectedRoute>
+                <Comprar />
               </ProtectedRoute>
             }
           />
