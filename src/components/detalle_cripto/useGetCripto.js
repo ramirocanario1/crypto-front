@@ -2,7 +2,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { api } from "../../config";
-import cripto from "./cripto_mock";
 
 export default function useGetCripto({id}) {
 
@@ -14,6 +13,12 @@ export default function useGetCripto({id}) {
     getCripto()
   }, [])
 
+  const getCriptoFromLocalStorage = () => {
+    const criptos = JSON.parse(localStorage.getItem('criptos'))
+    const cripto = criptos.find(cripto => cripto.id === parseInt(id))
+    return cripto
+  }
+
   const getCripto = async () => {
     try {
       setIsError(false)
@@ -21,20 +26,19 @@ export default function useGetCripto({id}) {
 
       const response = await axios.get(`${api}/criptos/${id}`)
 
-      // Esperar un segundo
-      // await new Promise(resolve => setTimeout(resolve, 0))
+      const criptoObj = response.data.data
+      const cripto = Object.values(criptoObj)[0]
 
-      // setData(cripto)
+      setData({
+        info: cripto,
+        precios: getCriptoFromLocalStorage()
+      })
 
-      setData(response.data)
       return true
 
     } catch (error) {
-
-      setData(cripto)
-      return true
-      // setIsError(true)
-      // return null
+      setIsError(true)
+      return null
     } finally {
       setIsLoading(false)
     }

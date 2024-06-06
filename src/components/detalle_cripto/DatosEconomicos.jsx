@@ -10,22 +10,32 @@ export default function DatosEconomicos({ cripto }) {
 
         <Container>
           <h3 className='text-white text-center'>Puesto</h3>
-          <span>{cripto.ranking}</span>
+          <span>{cripto.cmc_rank}</span>
+        </Container>
+
+        <Container>
+          <h3 className='text-white text-center'>Dominancia</h3>
+          <span>{cripto.quote.USD.market_cap_dominance.toFixed(1)}%</span>
         </Container>
 
         <Container>
           <h3 className='text-white'>Capitalización</h3>
-          <span>{agregarPuntos(cripto.capitalizacion)}</span>
+          <span>${agregarPuntos(cripto.quote.USD.market_cap)}</span>
+        </Container>
+
+        <Container>
+          <h3 className='text-white'>Volumen (24hs)</h3>
+          <span>${agregarPuntos(cripto.quote.USD.volume_24h)}</span>
         </Container>
 
         <Container>
           <h3 className='text-white text-center'>Unidades máximas</h3>
-          <span>{agregarPuntos(cripto.total)}</span>
+          <span>{cripto.max_supply ? agregarPuntos(cripto.max_supply) : 'Sin límite'}</span>
         </Container>
 
         <Container>
           <h3 className='text-white text-center'>Unidades en circulación</h3>
-          <span>{agregarPuntos(cripto.circulacion)}</span>
+          <span>{agregarPuntos(cripto.circulating_supply)}</span>
         </Container>
       </div>
     </section>

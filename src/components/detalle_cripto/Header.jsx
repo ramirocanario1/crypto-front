@@ -10,13 +10,13 @@ export default function Header({ cripto }) {
     <header className='flex justify-between items-center'>
       <div className='flex items-center gap-1'>
         <picture className='m-2'>
-          <img src={cripto.imagen} alt={cripto.nombre} className='w-8' />
+          <img src={cripto.logo} alt={cripto.name} className='w-8' />
         </picture>
-        <Title>{cripto.nombre}</Title>
-        <span className='text-gray-300'>({cripto.simbolo.toUpperCase()})</span>
+        <Title>{cripto.name}</Title>
+        <span className='text-gray-300'>({cripto.symbol})</span>
       </div>
 
-      <Link to={cripto.web} className='flex items-center gap-1 transition-all hover:border-b-2 border-gray-300'>
+      <Link to={cripto.urls.website[0]} className='flex items-center gap-1 transition-all hover:border-b-2 border-gray-300'>
         <span className='text-gray-300 text-sm'>Sitio oficial</span>
         <FiExternalLink className=''/>
       </Link>

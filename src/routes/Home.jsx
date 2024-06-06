@@ -7,13 +7,13 @@ import Saldo from '../components/home/saldo/Saldo'
 
 export default function Home() {
 
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(localStorage.getItem('user')) // TODO: cambiar por funcion
 
   return (
     <main className='flex flex-col gap-5'>
       <Title>Bienvenido, {user.username}</Title>
       <Saldo />
-      <Accesos />
+      {/* <Accesos /> */}
       <DolarCripto />
       <Criptomonedas />
     </main>

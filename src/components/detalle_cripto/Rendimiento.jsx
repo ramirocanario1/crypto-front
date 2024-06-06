@@ -10,29 +10,29 @@ export default function Rendimiento({ cripto }) {
       <Subtitle>Rendimiento</Subtitle>
 
       <Description>
-        Acá tenés un resumen del rendimiento de {cripto.nombre} en distintos periodos de tiempo.
+        Acá tenés un resumen del rendimiento de {cripto.name} en distintos periodos de tiempo.
       </Description>
 
       <div className='grid grid-cols-4 gap-2'>
 
         <div className='bg-gray-700 p-3 rounded shadow-md flex flex-col items-center'>
           <h3 className='text-white text-center text-sm'>24 horas</h3>
-          <Variacion variacion={cripto.cambio_24h} />
+          <Variacion variacion={cripto.quote.USD.percent_change_24h} />
         </div>
 
         <div className='bg-gray-700 p-3 rounded shadow-md flex flex-col items-center'>
           <h3 className='text-white text-center text-sm'>7 días</h3>
-          <Variacion variacion={cripto.cambio_7d} />
+          <Variacion variacion={cripto.quote.USD.percent_change_7d} />
         </div>
 
         <div className='bg-gray-700 p-3 rounded shadow-md flex flex-col items-center'>
-          <h3 className='text-white text-center text-sm'>Un mes</h3>
-          <Variacion variacion={cripto.cambio_30d} />
+          <h3 className='text-white text-center text-sm'>30 días</h3>
+          <Variacion variacion={cripto.quote.USD.percent_change_30d} />
         </div>
 
         <div className='bg-gray-700 p-3 rounded shadow-md flex flex-col items-center'>
-          <h3 className='text-white text-center text-sm'>Un año</h3>
-          <Variacion variacion={cripto.cambio_1y} />
+          <h3 className='text-white text-center text-sm'>90 días</h3>
+          <Variacion variacion={cripto.quote.USD.percent_change_90d} />
         </div>
 
       </div>

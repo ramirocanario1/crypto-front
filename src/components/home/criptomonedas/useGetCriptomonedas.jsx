@@ -2,7 +2,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { api } from "../../../config";
-import criptos_mock from "./criptos_mock";
 
 export default function useGetCriptomonedas() {
 
@@ -17,18 +16,13 @@ export default function useGetCriptomonedas() {
       setIsError(false);
       setIsLoading(true);
 
-      // const response = await axios.get(`${api}/criptos`);
-
-      // Esperar dos segundos para simular la carga de datos
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setData(criptos_mock)
-
+      const response = await axios.get(`${api}/criptos`);
       setIsSuccess(true);
       setIsError(false);
 
-      console.log(criptos_mock)
-      // setData(response.data);
+      const criptosObj = response.data.data
+      const criptosArray = Object.values(criptosObj)
+      setData(criptosArray);
       return true
 
     } catch (error) {

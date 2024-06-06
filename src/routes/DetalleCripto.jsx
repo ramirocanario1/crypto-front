@@ -22,12 +22,12 @@ export default function DetalleCripto() {
   return (
     <main className='p-2 flex flex-col gap-4'>
 
-      <Header cripto={cripto} />
+      <Header cripto={cripto.info} />
       <Operar cripto={cripto} />
-      <Rendimiento cripto={cripto} />
-      <MaximoHistorico cripto={cripto} />
-      <DatosEconomicos cripto={cripto} />
-      <Sentimientos cripto={cripto} />
+      <Rendimiento cripto={cripto.precios} />
+      {/* <MaximoHistorico cripto={cripto} /> */}
+      <DatosEconomicos cripto={cripto.precios} />
+      {/* <Sentimientos cripto={cripto} /> */}
     </main>
   )
 }
