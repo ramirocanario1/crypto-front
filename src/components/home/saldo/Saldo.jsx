@@ -32,7 +32,7 @@ export default function Saldo() {
       <p>Tu saldo</p>
 
       <div className='flex justify-between'>
-        <Link to='/movimientos' className='text-3xl'>{ocultarSaldo ? '****' : saldo + ' USDT'}</Link>
+        <Link to='/movimientos' className='text-3xl'>{ocultarSaldo ? '****' : saldo.toFixed(2) + ' USDT'}</Link>
         {
           ocultarSaldo ? 
             <button onClick={handleOcultarSaldo}><FaEyeSlash className='w-6 h-6' /></button> 
