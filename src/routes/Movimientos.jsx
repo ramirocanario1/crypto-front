@@ -5,9 +5,7 @@ import Movimiento from '../components/movimientos/Movimiento'
 export default function Movimientos() {
 
   const {movimientos, isLoading, isError} = useGetMovimientos()
-
   
-
   return (
     <main className='flex flex-col'>
         {movimientos.map((movimiento) => (
