@@ -5,7 +5,7 @@ import { api } from "./../../../config";
 import UserContext from '../../../contexts/UserContext';
 
 export default function useGetSaldo() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -15,9 +15,12 @@ export default function useGetSaldo() {
 
   useEffect(() => {
     const getSaldo = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get(`${api}/saldo/${user.id}`);
-        setSaldo(response.data.saldo);
+        const saldoFormateado = response.data.saldo.toFixed(2) + ' USDT';
+
+        setSaldo(saldoFormateado);
         setIsSuccess(true);
       } catch (error) {
         setIsError(true);
