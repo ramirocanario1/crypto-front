@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import useGetCripto from '../components/detalle_cripto/useGetCripto'
 import Header from '../components/detalle_cripto/Header'
 import Rendimiento from '../components/detalle_cripto/Rendimiento'
@@ -11,7 +11,8 @@ import Operar from '../components/detalle_cripto/Operar'
 export default function DetalleCripto() {
 
   const { id } = useParams()
-  const { isLoading, isError, data: cripto } = useGetCripto({ id })
+  const precios = useLocation().state.precios
+  const { isLoading, isError, data: cripto } = useGetCripto({ id, precios })
 
   if (isLoading) return <p>Cargando...</p>
 
