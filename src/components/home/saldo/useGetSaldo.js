@@ -4,7 +4,7 @@ import { api } from "./../../../config";
 
 import UserContext from '../../../contexts/UserContext';
 
-export default function useGetSaldo() {
+export default function useGetSaldo(formatearSaldo = true) {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -18,9 +18,14 @@ export default function useGetSaldo() {
       setIsLoading(true);
       try {
         const response = await axios.get(`${api}/saldo/${user.id}`);
-        const saldoFormateado = response.data.saldo.toFixed(2) + ' USDT';
+        
+        console.log({formatearSaldo})
+        let saldo = response.data.saldo.toFixed(2)
+        if (formatearSaldo) {
+          saldo = saldo + ' USDT';
+        }
 
-        setSaldo(saldoFormateado);
+        setSaldo(saldo);
         setIsSuccess(true);
       } catch (error) {
         setIsError(true);

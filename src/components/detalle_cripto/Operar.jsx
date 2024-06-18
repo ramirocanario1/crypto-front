@@ -16,8 +16,8 @@ export default function Operar({ cripto }) {
 
       {cripto ? 
       <div className='flex items-center gap-2'>
-        <Link to={`/comprar/${cripto?.info.id}`} className='bg-green-500 text-white w-full p-3 rounded shadow-md text-center'>Comprar</Link>
-        <Link to={`/vender/${cripto?.info.id}`} className='bg-red-500 text-white w-full p-3 rounded shadow-md text-center'>Vender</Link>
+        <Link to={`/comprar/${cripto?.info.id}`} state={{cripto}} className='bg-green-500 text-white w-full p-3 rounded shadow-md text-center'>Comprar</Link>
+        <Link to={`/vender/${cripto?.info.id}`} state={{cripto}} className='bg-red-500 text-white w-full p-3 rounded shadow-md text-center'>Vender</Link>
       </div>
       :
       <div className='flex items-center gap-2'>
