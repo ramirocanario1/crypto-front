@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { api } from "../../config";
 
-export default function useGetCripto({id}) {
+export default function useGetCripto({id, precios}) {
 
   const [data, setData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -12,12 +12,6 @@ export default function useGetCripto({id}) {
   useEffect(() => {
     getCripto()
   }, [])
-
-  const getCriptoFromLocalStorage = () => {
-    const criptos = JSON.parse(localStorage.getItem('criptos'))
-    const cripto = criptos.find(cripto => cripto.id === parseInt(id))
-    return cripto
-  }
 
   const getCripto = async () => {
     try {
@@ -31,7 +25,7 @@ export default function useGetCripto({id}) {
 
       setData({
         info: cripto,
-        precios: getCriptoFromLocalStorage()
+        precios: precios
       })
 
       return true
