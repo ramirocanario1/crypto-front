@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton'
 
 export default function Operar({ cripto }) {
-
   return (
     <section className='flex flex-col gap-2'>
       <Subtitle>{cripto ? "Operar" : <Skeleton width={100} />}</Subtitle>
@@ -17,8 +16,8 @@ export default function Operar({ cripto }) {
 
       {cripto ? 
       <div className='flex items-center gap-2'>
-        <Link to={`/comprar/${cripto?.id_api}`} className='bg-green-500 text-white w-full p-3 rounded shadow-md text-center'>Comprar</Link>
-        <Link to={`/vender/${cripto?.id_api}`} className='bg-red-500 text-white w-full p-3 rounded shadow-md text-center'>Vender</Link>
+        <Link to={`/comprar/${cripto?.info.id}`} className='bg-green-500 text-white w-full p-3 rounded shadow-md text-center'>Comprar</Link>
+        <Link to={`/vender/${cripto?.info.id}`} className='bg-red-500 text-white w-full p-3 rounded shadow-md text-center'>Vender</Link>
       </div>
       :
       <div className='flex items-center gap-2'>
