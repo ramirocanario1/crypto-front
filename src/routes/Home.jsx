@@ -4,6 +4,7 @@ import DolarCripto from '../components/home/DolarCripto'
 import Title from '../components/utils/Title'
 import Criptomonedas from '../components/home/criptomonedas/Criptomonedas'
 import Saldo from '../components/home/saldo/Saldo'
+import Portafolio from '../components/home/Portafolio'
 
 export default function Home() {
 
@@ -13,8 +14,8 @@ export default function Home() {
     <main className='flex flex-col gap-5'>
       <Title>Bienvenido, {user.username}</Title>
       <Saldo />
-      {/* <Accesos /> */}
       <DolarCripto />
+      <Portafolio />
       <Criptomonedas />
     </main>
   ) 
