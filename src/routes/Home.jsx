@@ -11,8 +11,8 @@ export default function Home() {
   const user = JSON.parse(localStorage.getItem('user')) // TODO: cambiar por funcion
 
   return (
-    <main className='flex flex-col gap-5'>
-      <Title>Bienvenido, {user.username}</Title>
+    <main className='flex flex-col gap-5 pb-24 pt-4'>
+      <Title className='pl-4'>👋 Bienvenido, {user.username}</Title>
       <Saldo />
       <DolarCripto />
       <Portafolio />
