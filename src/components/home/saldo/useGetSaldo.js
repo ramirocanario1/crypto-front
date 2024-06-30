@@ -18,8 +18,6 @@ export default function useGetSaldo(formatearSaldo = true) {
       setIsLoading(true);
       try {
         const response = await axios.get(`${api}/saldo/${user.id}`);
-        
-        console.log({formatearSaldo})
         let saldo = response.data.saldo.toFixed(2)
         if (formatearSaldo) {
           saldo = saldo + ' USDT';
