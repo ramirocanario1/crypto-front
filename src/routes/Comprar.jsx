@@ -1,7 +1,6 @@
 import React from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import useOperarCripto from '../components/comprar/useOperarCripto'
-import Section from '../components/deposito/Section'
 import PrecioCripto from '../components/comprar/PrecioCripto'
 import FormularioCompra from '../components/comprar/FormularioCompra'
 import Saldo from '../components/comprar/Saldo'
@@ -10,7 +9,7 @@ import useGetSaldo from '../components/home/saldo/useGetSaldo'
 export default function Comprar() {
 
   const { id } = useParams()
-  const { precio, comprar } = useOperarCripto({cripto: id, tipoOperacion: 'comprar'})
+  const { precio, comprar } = useOperarCripto({cripto: id})
   const cripto = useLocation().state.cripto
 
   const { saldo, isLoading: isSaldoLoading } = useGetSaldo(false)
