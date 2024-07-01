@@ -66,7 +66,7 @@ export default function FormularioCompra({cripto, precio, saldo, comprar}) {
           className="bg-green-500 w-full p-2 rounded-md mt-5 disabled:bg-gray-600"
           disabled={submitDisabled}
         >
-          Siguiente
+          {submitDisabled ? 'Saldo insuficiente' : 'Siguiente'}
         </button>
       </form>
     </Section>
