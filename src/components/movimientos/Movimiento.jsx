@@ -1,31 +1,46 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 
 import { PiHandDepositBold } from "react-icons/pi";
 import { PiHandWithdrawBold } from "react-icons/pi";
+import { PiHandCoins } from "react-icons/pi";
 
 export default function Movimiento({ movimiento }) {
 
   const [icon, setIcon] = useState("");
+  const [monto, setMonto] = useState("");
 
   useEffect(() => {
     if (movimiento.tipo === "DEPOSITO") {
       setIcon(<PiHandDepositBold className='w-6 h-6' />);
-    } else {
+    } else if (movimiento.tipo === "RETIRO") {
       setIcon(<PiHandWithdrawBold className='w-6 h-6' />);
-
+    } else if (movimiento.tipo === "COMPRA" || movimiento.tipo === "VENTA") {
+      setIcon(<PiHandCoins className='w-6 h-6' />);
     }
   }, [movimiento.tipo])
+
+  useLayoutEffect(() => {
+    const monto = movimiento.monto
+
+    if (movimiento.tipo === 'RETIRO' || movimiento.tipo === 'VENTA') {
+      setMonto(`-${monto}`)
+    } else {
+      setMonto(`+${monto}`)
+    }
+
+
+  }, [movimiento.monto])
 
   return (
     <div className='flex items-center gap-3 border-b-[1px] border-t-[1px] border-gray-700 shadow-md p-2'>
       <div className={`grid place-content-center`}>
-        <div className={`rounded-full p-2 ${movimiento.tipo === 'RETIRO' ? 'bg-red-500' : 'bg-green-600'}`}>
+        <div className={`rounded-full p-2 ${['RETIRO', 'VENTA'].includes(movimiento.tipo) ? 'bg-red-500' : 'bg-green-600'}`}>
           {icon}
         </div>
       </div>
       <div className='flex flex-col'>
         <span className='text-sm text-gray-400'>{movimiento.tipo}</span>
-        <span className='text-xl'>{movimiento.tipo === 'RETIRO' ? '-' : '+'}{movimiento.monto} USDT</span>
+        <span className='text-xl'>{monto} USDT</span>
       </div>
       <div className='ml-auto'>
         <span className='text-gray-400'>
