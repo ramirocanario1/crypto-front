@@ -85,7 +85,7 @@ export default function FormularioVenta({cripto, precio, saldo, vender}) {
           className="bg-green-500 w-full p-2 rounded-md mt-5 disabled:bg-gray-600"
           disabled={submitDisabled}
         >
-          {submitDisabled ? 'Saldo insuficiente' : 'Siguiente'}
+          {submitDisabled ? 'Saldo insuficiente' : 'Vender'}
         </button>
         {isSuccess && (
           <FieldSuccess>
