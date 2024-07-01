@@ -66,7 +66,7 @@ export default function RegistroForm({ onSubmit, isLoading, error }) {
         <Button disabled={isLoading}>
           {isLoading ? "Creando cuenta..." : "Crear cuenta"}
         </Button>
-        <OutlinedLinkButton to="/registro">¿Ya tenés cuenta? Iniciá sesión</OutlinedLinkButton>
+        <OutlinedLinkButton to="/login">¿Ya tenés cuenta? Iniciá sesión</OutlinedLinkButton>
       </fieldset>
     </form>
   );

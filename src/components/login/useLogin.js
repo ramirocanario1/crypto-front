@@ -30,8 +30,14 @@ export default function useLogin() {
 
     } catch (error) {
       setIsError(true);
-      setErrorMessage(error.response.data.message);
-      return null
+      
+      if (error?.response?.status === 401) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage("Ocurrió un error inesperado. Por favor, contacte con el administrador.");
+      }
+      
+
     } finally {
       setIsLoading(false);
     }

@@ -24,7 +24,10 @@ export default function useRegister() {
     } catch (error) {
       setIsError(true);
 
-      console.log(error.response)
+      if (error.code === "ERR_NETWORK") {
+        setErrorMessage("Ocurrió un error inesperado. Por favor, contacte con el administrador.");
+        return
+      }
 
       const errors = error.response.data
 
