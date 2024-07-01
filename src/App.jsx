@@ -13,6 +13,7 @@ import { UserProvider } from "./contexts/UserContext";
 import Movimientos from "./routes/Movimientos";
 import Comprar from "./routes/Comprar";
 import { SkeletonTheme } from "react-loading-skeleton";
+import Vender from "./routes/Vender";
 
 export default function App() {
   return (
@@ -81,6 +82,14 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <Comprar />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="vender/:id"
+              element={
+                <ProtectedRoute>
+                  <Vender />
                 </ProtectedRoute>
               }
             />

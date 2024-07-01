@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { api } from '../../config'
 import getCurrentUser from '../utils/getCurrentUser'
 
-export default function useOperarCripto({ cripto, tipoOperacion }) {
+export default function useOperarCripto({ cripto }) {
   
   const [isPrecioLoading, setIsPrecioLoading] = useState(false)
   const [precio, setPrecio] = useState(0)
@@ -50,9 +50,30 @@ export default function useOperarCripto({ cripto, tipoOperacion }) {
     }
   }
 
+  const vender = async (cantidad) => {
+    setIsOperacionLoading(true)
+    setIsOperacionError(false)
+
+    try {
+      const body = {
+        user_id: getCurrentUser().id,
+        cripto_id: cripto,
+        cantidad: parseFloat(cantidad),
+        precio: precio,
+      }
+
+      await axios.post(`${api}/vender`, body)
+      return true
+    } catch (error) {
+      setIsOperacionError(true)
+    } finally {
+      setIsOperacionLoading(false)
+    }
+  }
+
   useEffect(() => {
     getPrecio()
   }, [])
 
-  return { precio, isPrecioLoading, comprar, isOperacionLoading}
+  return { precio, isPrecioLoading, comprar, vender, isOperacionLoading}
 }
