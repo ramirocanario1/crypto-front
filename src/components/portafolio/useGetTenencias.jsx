@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function useGetTenencias() {
   const [tenencias, setTenencias] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {

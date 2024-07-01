@@ -5,11 +5,11 @@ import useGetTenencias from "./useGetTenencias"
 
  
 export default function usePortafolio() {
-  const { tenencias, isTenenciasLoading, isTenenciasError } = useGetTenencias()
-  const { data: criptos, isCriptosLoading, isCriptosError } = useGetCriptomonedas()
+  const { tenencias, isLoading: isTenenciasLoading } = useGetTenencias()
+  const { data: criptos, isLoading: isCriptosLoading } = useGetCriptomonedas()
 
   const [portafolio, setPortafolio] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  // const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if (tenencias && criptos) {
@@ -31,10 +31,10 @@ export default function usePortafolio() {
       console.log({portfolio})
 
       setPortafolio(portfolio)
-      setIsLoading(false)
+      // setIsLoading(false)
     }
   }, [tenencias, criptos])  
 
-  return {portfolio: portafolio, isLoading}
+  return {portfolio: portafolio, isLoading: isTenenciasLoading || isCriptosLoading}
 
 }

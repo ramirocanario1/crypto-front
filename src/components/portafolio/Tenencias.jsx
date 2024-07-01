@@ -21,12 +21,21 @@ export default function Tenencias() {
             Acá podés ver la variación de cada cripto en las últimas 24hs, el total en USD y el saldo actual de cada una.
           </Description>
         </header>
-      <ListaTenencias portfolio={portfolio} />
+      <ListaTenencias portfolio={portfolio} isLoading={isLoading} />
     </section>
   )
 }
 
-function ListaTenencias({ portfolio }) {
+function ListaTenencias({ portfolio, isLoading }) {
+
+  if (!isLoading && portfolio.length === 0) {
+    return (
+      <div className='flex flex-col items-center gap-3 mt-5'>
+        <p className='text-gray-400'>¡Aún no tenés ninguna cripto en tu portafolio!</p>
+      </div>
+    )
+  }
+
   return (
     <div className='flex flex-col gap-2'>
       {portfolio.map((tenencia, index) => (
