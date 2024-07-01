@@ -12,7 +12,7 @@ export default function Vender() {
   const { precio, vender } = useOperarCripto({cripto: id})
   const cripto = useLocation().state.cripto
 
-  const { saldo, isSaldoLoading } = useGetSaldoCripto(id)
+  const { saldo, isLoading: isSaldoLoading } = useGetSaldoCripto(id)
 
   return (
     <main className='flex flex-col gap-3'>
