@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -12,7 +12,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 export default function Saldo() {
 
   const { saldo, isLoading } = useGetSaldo()
-  const [saldoMostrado, setSaldoMostrado] = useState(saldo)
+  const [saldoMostrado, setSaldoMostrado] = useState('****')
   const [ocultarSaldo, setOcultarSaldo] = useState(true)
 
   const handleOcultarSaldo = () => {
@@ -23,14 +23,23 @@ export default function Saldo() {
     }
     localStorage.setItem('ocultarSaldo', !ocultarSaldo)
     setOcultarSaldo(!ocultarSaldo)
-
   }
+
+ useLayoutEffect(() => {
+    if (ocultarSaldo) {
+      setSaldoMostrado('****')
+    } else {
+      setSaldoMostrado(saldo)
+    }
+  }, [ocultarSaldo])
 
   // Oculto el saldo según las preferencias guardadas en localStorage
   useLayoutEffect(() => {
     const storedOcultarSaldo = localStorage.getItem('ocultarSaldo')
     if (storedOcultarSaldo) {
-      setOcultarSaldo(JSON.parse(storedOcultarSaldo))
+      const ocultar = JSON.parse(storedOcultarSaldo)
+      console.log({ocultar})
+      setOcultarSaldo(ocultar)
     }
   }, [])
 
