@@ -1,20 +1,29 @@
 import React, { useState } from 'react'
 import Section from '../deposito/Section'
 import { MdOutlineArrowDownward } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
+import FieldSuccess from '../utils/FieldSuccess'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 export default function FormularioCompra({cripto, precio, saldo, comprar}) {
 
   const [usdt, setUsdt] = useState("")
   const [cantidadCompra, setCantidadCompra] = useState("")
   const [submitDisabled, setSubmitDisabled] = useState(true)
+  const [isSuccess, setIsSuccess] = useState(false)
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const [animateRef] = useAutoAnimate()
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const success = comprar(cantidadCompra)
 
     if (success) {
-      console.log("Compra realizada con éxito")
+      setIsSuccess(true) 
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      navigate("/");
     } else {
       console.log("Error al realizar la compra")
     }
@@ -37,7 +46,7 @@ export default function FormularioCompra({cripto, precio, saldo, comprar}) {
 
   return (
     <Section>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={animateRef}>
         <fieldset className="flex flex-col">
           <label>Cantidad de USDT que quiero gastar en {cripto?.info.name}</label>
           <input
@@ -68,6 +77,11 @@ export default function FormularioCompra({cripto, precio, saldo, comprar}) {
         >
           {submitDisabled ? 'Saldo insuficiente' : 'Siguiente'}
         </button>
+        {isSuccess && (
+          <FieldSuccess>
+            Compra realizada con éxito. Puedes ver los fondos en tu cuenta.
+          </FieldSuccess>
+        )}
       </form>
     </Section>
   )

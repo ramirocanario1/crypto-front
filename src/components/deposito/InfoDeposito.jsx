@@ -25,7 +25,7 @@ export default function InfoDeposito({ datosDeposito }) {
     
     if (success) {
       // Demorar 4 segundos
-      await new Promise((resolve) => setTimeout(resolve, 6000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
       navigate("/");
     }
   }
