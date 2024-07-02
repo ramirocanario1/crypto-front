@@ -38,7 +38,6 @@ export default function Saldo() {
     const storedOcultarSaldo = localStorage.getItem('ocultarSaldo')
     if (storedOcultarSaldo) {
       const ocultar = JSON.parse(storedOcultarSaldo)
-      console.log({ocultar})
       setOcultarSaldo(ocultar)
     }
   }, [])
