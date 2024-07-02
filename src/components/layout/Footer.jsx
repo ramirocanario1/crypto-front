@@ -7,8 +7,8 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="fixed inset-x-0 bottom-0 bg-gray-950 shadow-md">
-      <div className='max-w-lg mx-auto bg-gray-800 py-4'>
+    <footer className="fixed inset-x-0 bottom-0 bg-gray-950 shadow-md ">
+      <div className='max-w-lg mx-auto bg-gray-800 py-4 border-t-4 border-green-700'>
         <div className='grid grid-cols-5'>
           <Acceso label='Movimientos' to='movimientos'>
             <FaMoneyBill1Wave className='w-6 h-6' />
