@@ -14,6 +14,7 @@ import Movimientos from "./routes/Movimientos";
 import Comprar from "./routes/Comprar";
 import { SkeletonTheme } from "react-loading-skeleton";
 import Vender from "./routes/Vender";
+import LayoutSinFooter from "./routes/LayoutSinFooter";
 
 export default function App() {
   return (
@@ -93,6 +94,8 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+          </Route>
+          <Route path="/" element={<LayoutSinFooter />}>
             <Route path="login" element={<Login />} />
             <Route path="registro" element={<Registro />} />
           </Route>

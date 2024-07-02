@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { MdLogout } from "react-icons/md";
 import { TbReceiptBitcoin } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 
-export default function Header() {
-
-
-  const [showLogout, setShowLogout] = useState(false)
-
-  useEffect(() => {
-    // Verifico si el usuario está logueado
-    const user = localStorage.getItem('user')
-    if (user) {
-      setShowLogout(true)
-    }
-  }, [])
-
-
-
+export default function Header({ showLogout = true }) {
   const handleLogout = () => {
     localStorage.removeItem('user')
     window.location.reload()
