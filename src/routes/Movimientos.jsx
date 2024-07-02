@@ -26,7 +26,7 @@ export default function Movimientos() {
         {movimientos.map((movimiento) => (
             <Movimiento movimiento={movimiento} key={movimiento.id} />
         ))}
-        <p className='text-sm m-3 text-center text-gray-400'>-- No hay más movimientos --</p>
+        <p className='text-sm m-3 text-center text-gray-400 mb-20'>-- No hay más movimientos --</p>
     </main>
   )
 }

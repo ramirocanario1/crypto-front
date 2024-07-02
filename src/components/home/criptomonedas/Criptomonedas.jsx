@@ -4,6 +4,7 @@ import Description from '../../utils/Description'
 import useGetCriptomonedas from './useGetCriptomonedas'
 import Variacion from '../../utils/Variacion'
 import { Link } from 'react-router-dom'
+import Skeleton from 'react-loading-skeleton'
 
 export default function Criptomonedas() {
   const { isLoading, isError, errorMessage, isSuccess, data } = useGetCriptomonedas();
@@ -15,26 +16,39 @@ export default function Criptomonedas() {
         Accedé a las principales criptomonedas del mercado y mantenete informado sobre su cotización.
       </Description>
 
-      {isLoading && <p>Cargando...</p>}
-
-      {isError && <p>{errorMessage}</p>}
-
-      {isSuccess && <ListaCriptos criptos={data} />}
+      {isError ? 
+        <p>{errorMessage}</p> 
+        : 
+        <ListaCriptos criptos={data} isLoading={isLoading} />
+      }
     </section>
   );
 }
 
-function ListaCriptos({ criptos }) {
+function ListaCriptos({ criptos, isLoading }) {
+
+  if (isLoading) {
+    return (
+      <div className='flex flex-col gap-2'>
+        <Skeleton height={60}/>
+        <Skeleton height={60}/>
+        <Skeleton height={60}/>
+        <Skeleton height={60}/>
+      </div>
+    )
+  }
+
   return (
     <div className='flex flex-col gap-2'>
       {criptos.map(cripto => (
-        <Cripto key={cripto.id} cripto={cripto} />
+        <Cripto key={cripto.id} cripto={cripto} isLoading={isLoading} />
       ))}
     </div>
   );
 }
 
 function Cripto({ cripto }) {
+
   return (
     <Link to={`/cripto/${cripto.id}`} state={{precios: cripto}} className='bg-gray-800 flex items-center shadow-md rounded hover:bg-gray-900 transition-colors'>
       <picture>
