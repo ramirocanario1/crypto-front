@@ -22,7 +22,7 @@ export default function Movimiento({ movimiento }) {
   useLayoutEffect(() => {
     const monto = movimiento.monto
 
-    if (movimiento.tipo === 'RETIRO' || movimiento.tipo === 'VENTA') {
+    if (movimiento.tipo === 'RETIRO' || movimiento.tipo === 'COMPRA') {
       setMonto(`-${monto}`)
     } else {
       setMonto(`+${monto}`)
@@ -34,7 +34,7 @@ export default function Movimiento({ movimiento }) {
   return (
     <div className='flex items-center gap-3 border-b-[1px] border-t-[1px] border-gray-700 shadow-md p-2'>
       <div className={`grid place-content-center`}>
-        <div className={`rounded-full p-2 ${['RETIRO', 'VENTA'].includes(movimiento.tipo) ? 'bg-red-500' : 'bg-green-600'}`}>
+        <div className={`rounded-full p-2 ${['RETIRO', 'COMPRA'].includes(movimiento.tipo) ? 'bg-red-500' : 'bg-green-600'}`}>
           {icon}
         </div>
       </div>
