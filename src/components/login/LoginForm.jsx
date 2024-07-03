@@ -35,7 +35,7 @@ export default function LoginForm({onSubmit, isLoading, error}) {
       </fieldset>
 
       <fieldset className="flex flex-col" ref={formRef}>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Contraseña</label>
         <input
           type="password"
           className="rounded shadow-md py-2 px-2 text-black outline-none"
